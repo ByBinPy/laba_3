@@ -2,26 +2,26 @@ package org.example.account;
 
 import lombok.Getter;
 import org.example.Transaction;
+import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.List;
 
-@Getter
 public class CreditAccount extends Account
 {
-    private final int id;
-    private double amount;
-    private List<Transaction> transaction;
-
-    public CreditAccount(int id, double amount, List<Transaction> transaction) {
-        this.id = id;
-        this.amount = amount;
-        this.transaction = transaction;
+    public CreditAccount(int id,int clientId) {
+        super(id,clientId);
     }
 
     @Override
-    public double transaction(double diffAmount)
+    public double withdrawal(double amount)
     {
-        amount += diffAmount;
+        this.amount -= amount;
+        return this.amount;
+    }
+    @Override
+    public double transfer(double transferAmount)
+    {
+        amount += transferAmount;
         return amount;
     }
 }

@@ -1,9 +1,5 @@
 package org.example;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
-public interface Transaction
-{
-    Time getTime();
-    double getDifference();
-}
+public record Transaction(LocalTime time,double differenceAmount){};

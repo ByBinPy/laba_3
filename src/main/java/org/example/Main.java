@@ -1,13 +1,14 @@
 package org.example;
 
+import org.example.bank.Bank;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) {
-        try {
-            Client client = new Client.ClientBuilder().name(null).surname(null).address(" ").passwordNumber(123).build();
-        }
-        catch (Exception e)
-        {
-            String message = e.getMessage();
-        }
+    public static void main(String[] args)
+    {
+        Bank bank = new Bank(1,1,1,1);
     }
 }

@@ -29,8 +29,8 @@ public class CentralBank {
         {
             try
             {
-                fromAccount.transaction(-diff_amount);
-                toAccount.transaction(diff_amount);
+                fromAccount.transfer(-diff_amount);
+                toAccount.transfer(diff_amount);
             }
             catch (InvalidTransferAmountException e) //создать своё исключение
             {

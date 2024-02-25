@@ -9,15 +9,16 @@ import lombok.NonNull;
 @Builder
 public class Client
 {
-    private int id;
+    private final int defaultId = -1;
+    private int id = defaultId;
     private @NonNull String name;
     private @NonNull String surname;
     private String address;
-    private int passwordNumber;
+    private int passportNumber;
     @Override
     public int hashCode()
     {
-        return name.hashCode()+surname.hashCode()+address.hashCode() + passwordNumber;
+        return name.hashCode()+surname.hashCode()+address.hashCode() + passportNumber;
     }
 
 }

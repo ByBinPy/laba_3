@@ -4,22 +4,32 @@ import lombok.Getter;
 import org.example.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 
+import java.util.ArrayList;
 import java.util.List;
-@Getter
 public class DepositAccount extends Account
 {
-    int id;
-    double amount;
-    List<Transaction> transaction;
+    public DepositAccount(int id,int clientId) {
+        super(id,clientId);
+    }
 
     @Override
-    public double transaction(double diffAmount) throws InvalidTransferAmountException
+    public double withdrawal(double amount) throws InvalidTransferAmountException
     {
-        if (diffAmount + amount < 0)
+
+        if (this.amount - amount < 0)
+            throw new InvalidTransferAmountException("try refill amount great then currency amount");
+        this.amount -= amount;
+        return this.amount;
+    }
+    @Override
+    public double transfer(double transferAmount) throws InvalidTransferAmountException
+    {
+        if (transferAmount + amount < 0)
         {
             throw new InvalidTransferAmountException("result amount less 0");
         }
-        amount += diffAmount;
+        amount += transferAmount;
         return amount;
     }
 }
+
