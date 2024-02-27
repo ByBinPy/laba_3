@@ -4,12 +4,16 @@ import jdk.jshell.spi.ExecutionControl;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import org.example.Client;
+import org.example.clients.Client;
 import org.example.account.*;
+import org.example.clients.Client;
+import org.example.exceptions.InvalidAccountIdException;
+import org.example.exceptions.InvalidTransactionId;
 import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Getter
@@ -18,8 +22,8 @@ public class Bank {
     private double debitInterest;
     private double depositInterest;
     private double creditCommission;
-    private List<Client> clients;
-    private List<Account> accounts;
+    private final List<Client> clients;
+    private final List<Account> accounts;
 
     public Bank(int id, double debit, double deposit, double credit) {
         bankId = id;
@@ -75,17 +79,29 @@ public class Bank {
     public void setCreditCommission(double interest) {
         creditCommission = interest;
     }
-
-    public Account findAccountById(int id)
+    public void notifyClients(String notification)
     {
-        return firstOrDefault(accounts.stream().filter(x -> x.getId() == id).toList(), new DepositAccount(-1,-1));
+
     }
 
-    public Client findClientById(int id)
+    public Optional<Account> findAccountById(int id)
     {
-        return firstOrDefault(clients.stream().filter(x -> x.getId() == id).collect(Collectors.toList()), Client.builder().name("").surname("").build());
+        return accounts.stream().filter(x -> x.getId() == id).findFirst();
     }
-    private static <T> T firstOrDefault(List<T> list, T defaultValue) {
-        return list.isEmpty() ? defaultValue : list.get(0);
+
+    public Optional<Client> findClientById(int id)
+    {
+        return clients.stream().filter(x -> x.getId() == id).findFirst();
+    }
+    public void cancelOperation(int transactionId, int accountId)
+            throws InvalidAccountIdException, InvalidTransactionId
+    {
+        Optional<Account> account;
+
+        if ((account = findAccountById(accountId)).isEmpty())
+            throw new InvalidAccountIdException("Invalid account id in cancellation");
+
+        if (!account.get().cancellation(transactionId))
+            throw new InvalidTransactionId(String.format("Invalid transaction id in bankId -> %d", bankId));
     }
 }

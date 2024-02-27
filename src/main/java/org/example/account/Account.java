@@ -1,22 +1,26 @@
 package org.example.account;
 
 import lombok.Getter;
-import org.example.Transaction;
+import org.example.clients.Transaction;
+import org.example.clients.Transaction;
+import org.example.exceptions.InvalidTransactionId;
 import org.example.exceptions.InvalidTransferAmountException;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Getter
 public abstract class Account
 {
     private final double defaultAmount = 0;
-    int id;
-    int clientId;
-    double amount;
+    protected int id;
+    protected int clientId;
+    protected double amount;
 
-    List<Transaction> transactionHistory;
+     protected List<Transaction> transactionHistory;
     public Account(int id, int clientId) {
         this.id = id;
         this.clientId = clientId;
@@ -26,8 +30,17 @@ public abstract class Account
     public double refill(double amount)
     {
         this.amount += amount;
-        transactionHistory.add(new Transaction(LocalTime.now(), amount));
+        transactionHistory.add(new Transaction(transactionHistory.getLast().id(), LocalTime.now(), amount));
         return this.amount;
+    }
+    public boolean cancellation(int transactionId)
+    {
+        Optional<Transaction>transaction =  transactionHistory.stream().filter(t -> t.id() == transactionId).findFirst();
+        if (transaction.isEmpty())
+            return false;
+        amount += transaction.get().differenceAmount();
+        transactionHistory = transactionHistory.stream().filter(t -> t.id() != transactionId).collect(Collectors.toList());
+        return true;
     }
     public abstract double withdrawal(double amount) throws InvalidTransferAmountException;
     public abstract double transfer(double transferAmount) throws InvalidTransferAmountException;

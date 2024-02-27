@@ -1,7 +1,7 @@
 package org.example.account;
 
 import lombok.Getter;
-import org.example.Transaction;
+import org.example.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class DebitAccount extends Account {
     }
     @Override
     public double transfer(double transferAmount) throws InvalidTransferAmountException {
-        if (transferAmount + amount < 0)
+        if (transferAmount + amount < 0 && amount >= 0)
         {
             throw new InvalidTransferAmountException("result amount less 0");
         }

@@ -2,15 +2,14 @@ package org.example.bank;
 
 import lombok.NonNull;
 import org.example.account.Account;
-import org.example.exceptions.InvalidAccountIdException;
-import org.example.exceptions.InvalidDataForRegistrationBankException;
-import org.example.exceptions.InvalidTransferAmountException;
+import org.example.exceptions.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CentralBank {
-    private ArrayList<Bank> banks;
-    private static CentralBank centralBank = new CentralBank();
+    private final ArrayList<Bank> banks;
+    private static final CentralBank centralBank = new CentralBank();
 
     private CentralBank()
     {
@@ -21,18 +20,18 @@ public class CentralBank {
         return centralBank;
     }
 
-    public void transfer(int fromBankId, int toBankId, int fromAccountId, int toAccountId, double diff_amount) throws InvalidAccountIdException //сменить
+    public void transfer(int fromBankId, int toBankId, int fromAccountId, int toAccountId, double diff_amount) throws InvalidAccountIdException
     {
-        Account fromAccount = centralBank.findBankByID(fromBankId).findAccountById(fromAccountId);
-        Account toAccount = centralBank.findBankByID(toBankId).findAccountById(toAccountId);
-        if (fromAccount != null && toAccount != null)
+        Optional<Account> fromAccount = centralBank.findBankByID(fromBankId).findAccountById(fromAccountId);
+        Optional<Account> toAccount = centralBank.findBankByID(toBankId).findAccountById(toAccountId);
+        if (fromAccount.isPresent() && toAccount.isPresent())
         {
             try
             {
-                fromAccount.transfer(-diff_amount);
-                toAccount.transfer(diff_amount);
+                fromAccount.get().transfer(-diff_amount);
+                toAccount.get().transfer(diff_amount);
             }
-            catch (InvalidTransferAmountException e) //создать своё исключение
+            catch (InvalidTransferAmountException e)
             {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
@@ -41,7 +40,7 @@ public class CentralBank {
         }
         else
         {
-            throw new InvalidAccountIdException("wrong identifying data"); //создать своё исключение
+            throw new InvalidAccountIdException("wrong identifying data");
         }
 
     }
@@ -54,31 +53,25 @@ public class CentralBank {
         else
             return new Bank(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest);
     }
+    public void canselTransfer(int fromBankId, int toBankId,
+                               int fromAccountId, int toAccountId,
+                               int fromOperationId, int toOperationId)
+            throws InvalidAccountIdException, InvalidTransactionId, InvalidBankIdException
+    {
 
-    private @NonNull Bank findBankByID(int id) {
+        Optional<Bank> bankFrom = banks.stream().filter(b -> b.getBankId() == fromBankId).findFirst();
+        Optional<Bank> bankTo = banks.stream().filter(b -> b.getBankId() == toBankId).findFirst();
 
-        if (banks.isEmpty()) {
-            return new Bank(-1,-1,-1,-1);
-        }
+        if (bankFrom.isEmpty() || bankTo.isEmpty())
+            throw new InvalidBankIdException(String.format("Invalid bankId %d %d in cancellation transfer", fromBankId, toBankId));
 
-        int right = banks.size() - 1;
-        int left = 0;
+        bankTo.get().cancelOperation(toAccountId, toOperationId);
+        bankFrom.get().cancelOperation(fromAccountId, fromOperationId);
+    }
+    private Bank findBankByID(int id)
+    {
+        Optional<Bank> bank = banks.stream().filter(b -> b.getBankId() == id ).findFirst();
 
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            int idSearch = banks.get(mid).getBankId();
-
-            if (id == idSearch) {
-                return banks.get(mid);
-            }
-
-            if (idSearch < id) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-
-        return new Bank(-1,-1,-1,-1);
+        return bank.orElseGet(() -> new Bank(-1, -1, -1, -1));
     }
 }

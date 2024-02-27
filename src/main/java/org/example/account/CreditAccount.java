@@ -1,7 +1,7 @@
 package org.example.account;
 
 import lombok.Getter;
-import org.example.Transaction;
+import org.example.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.List;

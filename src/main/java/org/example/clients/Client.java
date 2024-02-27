@@ -1,7 +1,6 @@
-package org.example;
+package org.example.clients;
 
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 
@@ -14,7 +13,11 @@ public class Client
     private @NonNull String name;
     private @NonNull String surname;
     private String address;
-    private int passportNumber;
+    private Integer passportNumber;
+    public boolean isSuspicious()
+    {
+        return address != null && passportNumber != null;
+    }
     @Override
     public int hashCode()
     {
