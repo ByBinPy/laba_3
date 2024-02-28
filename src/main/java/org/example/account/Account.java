@@ -5,6 +5,7 @@ import org.example.clients.Transaction;
 import org.example.clients.Transaction;
 import org.example.exceptions.InvalidTransactionId;
 import org.example.exceptions.InvalidTransferAmountException;
+import org.example.notifying.Subscriber;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -13,12 +14,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Getter
-public abstract class Account
+public abstract class Account implements Subscriber
 {
     private final double defaultAmount = 0;
     protected int id;
     protected int clientId;
     protected double amount;
+
+    protected String news = "";
 
      protected List<Transaction> transactionHistory;
     public Account(int id, int clientId) {

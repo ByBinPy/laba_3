@@ -53,6 +53,7 @@ public class Bank {
                             .address(address)
                             .passportNumber(passportNumber)
                             .build());
+
     }
     public void registrationAccount(int clientId, AccountType type) throws ExecutionControl.NotImplementedException
     {

@@ -31,5 +31,10 @@ public class DepositAccount extends Account
         amount += transferAmount;
         return amount;
     }
+
+    @Override
+    public void update(String message) {
+        news = message;
+    }
 }
 

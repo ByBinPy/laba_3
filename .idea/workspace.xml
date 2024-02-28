@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/clients/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/clients/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidBankIdException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidTransactionId.java" afterDir="false" />
+    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/notifying/Publisher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/notifying/Subscriber.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Transaction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/CentralBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/CentralBank.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +30,7 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -75,7 +71,7 @@
       <updated>1708624260342</updated>
       <workItem from="1708624261516" duration="6865000" />
       <workItem from="1708857516175" duration="23923000" />
-      <workItem from="1709041429705" duration="4023000" />
+      <workItem from="1709041429705" duration="5773000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -91,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708886179685</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations">
+      <created>1709045754704</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709045754704</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +114,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="wrote special exceptions and logic for transfer" />
     <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException" />
+    <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
   </component>
 </project>
