@@ -1,10 +1,8 @@
-package org.example.account;
+package org.example.impl.account;
 
-import lombok.Getter;
-import org.example.clients.Transaction;
+import org.example.declarations.Account;
 import org.example.exceptions.InvalidTransferAmountException;
 
-import java.util.List;
 public class DebitAccount extends Account {
 
     public DebitAccount(int id,int clientId) {

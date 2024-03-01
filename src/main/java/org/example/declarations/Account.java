@@ -1,11 +1,9 @@
-package org.example.account;
+package org.example.declarations;
 
 import lombok.Getter;
-import org.example.clients.Transaction;
-import org.example.clients.Transaction;
-import org.example.exceptions.InvalidTransactionId;
+import org.example.impl.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
-import org.example.notifying.Subscriber;
+import org.example.declarations.notifying.Subscriber;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -23,7 +21,7 @@ public abstract class Account implements Subscriber
 
     protected String news = "";
 
-     protected List<Transaction> transactionHistory;
+    protected List<Transaction> transactionHistory;
     public Account(int id, int clientId) {
         this.id = id;
         this.clientId = clientId;

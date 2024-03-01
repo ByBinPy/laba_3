@@ -1,11 +1,8 @@
-package org.example.account;
+package org.example.impl.account;
 
-import lombok.Getter;
-import org.example.clients.Transaction;
+import org.example.declarations.Account;
 import org.example.exceptions.InvalidTransferAmountException;
 
-import java.util.ArrayList;
-import java.util.List;
 public class DepositAccount extends Account
 {
     public DepositAccount(int id,int clientId) {

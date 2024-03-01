@@ -1,10 +1,6 @@
-package org.example.account;
+package org.example.impl.account;
 
-import lombok.Getter;
-import org.example.clients.Transaction;
-import org.example.exceptions.InvalidTransferAmountException;
-
-import java.util.List;
+import org.example.declarations.Account;
 
 public class CreditAccount extends Account
 {

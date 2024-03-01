@@ -1,4 +1,4 @@
-package org.example.notifying;
+package org.example.declarations.notifying;
 
 public interface Publisher<T>
 {

@@ -4,15 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/notifying/Publisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/notifying/Subscriber.java" afterDir="false" />
+    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="add: subscribe">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/bank/CentralBank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/AccountType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/CreditAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DebitAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DepositAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/bank/BankImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/CentralBank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/clients/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/clients/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/clients/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/clients/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/notifying/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/notifying/Publisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/notifying/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/notifying/Subscriber.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +40,7 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Record" />
         <option value="Interface" />
       </list>
     </option>
@@ -60,6 +71,10 @@
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.example" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.declarations" />
+      <recent name="org.example.Declarations" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -71,7 +86,10 @@
       <updated>1708624260342</updated>
       <workItem from="1708624261516" duration="6865000" />
       <workItem from="1708857516175" duration="23923000" />
-      <workItem from="1709041429705" duration="5773000" />
+      <workItem from="1709041429705" duration="5996000" />
+      <workItem from="1709143398501" duration="380000" />
+      <workItem from="1709293436966" duration="2000" />
+      <workItem from="1709307609265" duration="6211000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -94,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709045754704</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: subscribe">
+      <created>1709116294173</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709116294173</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,6 +140,7 @@
     <MESSAGE value="wrote special exceptions and logic for transfer" />
     <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException" />
     <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
+    <MESSAGE value="add: subscribe" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: subscribe" />
   </component>
 </project>
