@@ -1,4 +1,4 @@
-package org.example.impl.account;
+package org.example.imp.account;
 
 public enum AccountType
 {

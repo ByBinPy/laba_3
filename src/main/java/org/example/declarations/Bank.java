@@ -2,7 +2,7 @@ package org.example.declarations;
 
 import jdk.jshell.spi.ExecutionControl;
 import lombok.NonNull;
-import org.example.impl.account.AccountType;
+import org.example.imp.account.AccountType;
 import org.example.exceptions.InvalidAccountIdException;
 import org.example.exceptions.InvalidBankIdException;
 import org.example.exceptions.InvalidTransactionId;

@@ -1,10 +1,10 @@
-package org.example.impl.clients;
+package org.example.imp.clients;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import org.example.declarations.Client;
-import org.example.impl.Message;
+import org.example.imp.Message;
 
 @Getter
 @Builder

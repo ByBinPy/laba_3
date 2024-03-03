@@ -1,4 +1,4 @@
-package org.example.impl.bank;
+package org.example.imp.bank;
 
 import jdk.jshell.spi.ExecutionControl;
 import lombok.Getter;
@@ -6,8 +6,8 @@ import lombok.NonNull;
 import org.example.declarations.Account;
 import org.example.declarations.Bank;
 import org.example.declarations.Client;
-import org.example.impl.clients.ClientImpl;
-import org.example.impl.account.*;
+import org.example.imp.clients.ClientImpl;
+import org.example.imp.account.*;
 import org.example.exceptions.InvalidAccountIdException;
 import org.example.exceptions.InvalidBankIdException;
 import org.example.exceptions.InvalidTransactionId;

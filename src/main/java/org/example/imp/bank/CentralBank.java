@@ -1,4 +1,4 @@
-package org.example.impl.bank;
+package org.example.imp.bank;
 
 import org.example.declarations.Bank;
 import org.example.exceptions.*;
@@ -27,6 +27,9 @@ public class CentralBank {
     public Optional<Bank> getBankByID(int id)
     {
         return banks.stream().filter(b -> b.getBankId() == id ).findFirst();
-
+    }
+    public void notifyBanks()
+    {
+        return ;
     }
 }

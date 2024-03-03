@@ -1,4 +1,4 @@
-package org.example.impl;
+package org.example.imp;
 
 public record Message(String text) {
 }

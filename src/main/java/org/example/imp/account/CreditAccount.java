@@ -1,4 +1,4 @@
-package org.example.impl.account;
+package org.example.imp.account;
 
 import org.example.declarations.Account;
 

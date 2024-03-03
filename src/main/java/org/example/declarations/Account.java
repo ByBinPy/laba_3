@@ -1,7 +1,7 @@
 package org.example.declarations;
 
 import lombok.Getter;
-import org.example.impl.clients.Transaction;
+import org.example.imp.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 import org.example.declarations.notifying.Subscriber;
 

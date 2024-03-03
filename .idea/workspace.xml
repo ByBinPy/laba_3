@@ -4,25 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="add: subscribe">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/bank/CentralBank.java" afterDir="false" />
+    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="fix: change directories and add interfaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/Account.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/CreditAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DebitAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DepositAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/bank/BankImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/bank/CentralBank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/clients/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/clients/ClientImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/clients/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/impl/account/clients/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/notifying/Publisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/notifying/Publisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/notifying/Subscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/notifying/Subscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/account/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/account/AccountType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/account/CreditAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/account/DebitAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/account/DepositAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/bank/BankImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/bank/BankImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/bank/CentralBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/bank/CentralBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/clients/ClientImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/ClientImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/impl/clients/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/Transaction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +84,9 @@
       <workItem from="1709041429705" duration="5996000" />
       <workItem from="1709143398501" duration="380000" />
       <workItem from="1709293436966" duration="2000" />
-      <workItem from="1709307609265" duration="6211000" />
+      <workItem from="1709307609265" duration="8285000" />
+      <workItem from="1709469658873" duration="1199000" />
+      <workItem from="1709490893832" duration="676000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -119,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709116294173</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: change directories and add interfaces">
+      <created>1709313961160</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1709313961160</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +145,7 @@
     <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException" />
     <MESSAGE value="fix: account, bank, and search&#10;add: type of account, InvalidRefillAmountException&#10;add: personal Exceptions&#10;feature: cancellation operation&#10;edit: find* operations" />
     <MESSAGE value="add: subscribe" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: subscribe" />
+    <MESSAGE value="fix: change directories and add interfaces" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: change directories and add interfaces" />
   </component>
 </project>

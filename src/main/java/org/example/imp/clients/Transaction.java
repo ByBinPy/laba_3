@@ -1,4 +1,4 @@
-package org.example.impl.clients;
+package org.example.imp.clients;
 
 import java.time.LocalTime;
 
