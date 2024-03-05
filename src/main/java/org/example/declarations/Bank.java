@@ -2,11 +2,8 @@ package org.example.declarations;
 
 import jdk.jshell.spi.ExecutionControl;
 import lombok.NonNull;
+import org.example.exceptions.*;
 import org.example.imp.account.AccountType;
-import org.example.exceptions.InvalidAccountIdException;
-import org.example.exceptions.InvalidBankIdException;
-import org.example.exceptions.InvalidTransactionId;
-import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.Optional;
 
@@ -22,9 +19,10 @@ public interface Bank
     void setDebitInterest(double interest);
     void setDepositInterest(double interest);
     void setCreditCommission(double interest);
-    void notifyClients(String notification);
     Optional<Account> getAccountById(int id);
     Optional<Client> getClientById(int id);
+    void dayRecalculate() throws Invalid, InvalidAmountException;
+    void amountRecalculate();
     void cancelOperation(int transactionId, int accountId)
             throws InvalidAccountIdException,
             InvalidTransactionId;

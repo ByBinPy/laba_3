@@ -4,11 +4,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
 import org.example.declarations.Client;
+import org.example.declarations.notifying.Subscriber;
 import org.example.imp.Message;
+
+import javax.print.attribute.SupportedValuesAttribute;
 
 @Getter
 @Builder
-public class ClientImpl implements Client
+public class ClientImp implements Client, Subscriber
 {
     private @NonNull Integer id;
     private @NonNull String name;

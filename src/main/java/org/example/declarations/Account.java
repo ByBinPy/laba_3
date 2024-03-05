@@ -1,6 +1,9 @@
 package org.example.declarations;
 
 import lombok.Getter;
+import lombok.Setter;
+import org.example.exceptions.InvalidAccountIdException;
+import org.example.exceptions.InvalidAmountException;
 import org.example.imp.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 import org.example.declarations.notifying.Subscriber;
@@ -17,16 +20,23 @@ public abstract class Account implements Subscriber
     private final double defaultAmount = 0;
     protected int id;
     protected int clientId;
-    protected double amount;
-
+    protected double amount = defaultAmount;
+    @Setter
+    double interest = defaultAmount;
+    protected double hideDifferenceAmount = defaultAmount;
     protected String news = "";
-
-    protected List<Transaction> transactionHistory;
-    public Account(int id, int clientId) {
+    protected List<Transaction> transactionHistory = new ArrayList<>();
+    public Account(int id, int clientId, double interest) {
         this.id = id;
         this.clientId = clientId;
-        amount = defaultAmount;
-        transactionHistory = new ArrayList<>();
+        this.interest = interest;
+    }
+    public void increaseHideAmount() throws InvalidAmountException
+    {
+        if (amount < 0)
+            throw new InvalidAmountException(String.format("Negative amount in account - > %d ", id));
+
+        hideDifferenceAmount += amount*interest/365;
     }
     public double refill(double amount)
     {
@@ -43,6 +53,7 @@ public abstract class Account implements Subscriber
         transactionHistory = transactionHistory.stream().filter(t -> t.id() != transactionId).collect(Collectors.toList());
         return true;
     }
+    public abstract void approveHideAmount();
     public abstract double withdrawal(double amount) throws InvalidTransferAmountException;
     public abstract double transfer(double transferAmount) throws InvalidTransferAmountException;
 

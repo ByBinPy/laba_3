@@ -1,8 +1,11 @@
 package org.example.declarations.notifying;
 
-public interface Publisher<T>
+import org.example.exceptions.InvalidClientIdException;
+
+public interface Publisher
 {
-    void subscribe(int subscriberId);
-    void unsubscribe(int subscriberId);
-    void notify(T message);
+    void subscribe(int subscriberId) throws InvalidClientIdException;
+    void unsubscribe(int subscriberId) throws InvalidClientIdException;
+    void notify(String message);
+
 }

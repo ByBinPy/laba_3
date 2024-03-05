@@ -5,8 +5,14 @@ import org.example.exceptions.InvalidTransferAmountException;
 
 public class DepositAccount extends Account
 {
-    public DepositAccount(int id,int clientId) {
-        super(id,clientId);
+    public DepositAccount(int id,int clientId, double interest) {
+        super(id,clientId,interest);
+    }
+
+    @Override
+    public void approveHideAmount() {
+        amount += hideDifferenceAmount;
+        hideDifferenceAmount = 0;
     }
 
     @Override

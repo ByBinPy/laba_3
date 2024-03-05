@@ -28,8 +28,12 @@ public class CentralBank {
     {
         return banks.stream().filter(b -> b.getBankId() == id ).findFirst();
     }
-    public void notifyBanks()
+    public void notifyBanksAboutNewDay() throws InvalidAmountException
     {
-        return ;
+        for (Bank bank : banks) bank.dayRecalculate();
+    }
+    public void notifyBanksAboutAccrual() throws InvalidAmountException
+    {
+        for (Bank bank : banks) bank.amountRecalculate();
     }
 }

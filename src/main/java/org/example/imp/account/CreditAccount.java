@@ -2,10 +2,17 @@ package org.example.imp.account;
 
 import org.example.declarations.Account;
 
+
 public class CreditAccount extends Account
 {
-    public CreditAccount(int id,int clientId) {
-        super(id,clientId);
+    public CreditAccount(int id,int clientId, double interest) {
+        super(id,clientId,interest);
+    }
+
+    @Override
+    public void approveHideAmount() {
+        amount -= hideDifferenceAmount;
+        hideDifferenceAmount = 0;
     }
 
     @Override

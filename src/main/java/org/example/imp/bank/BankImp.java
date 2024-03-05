@@ -6,24 +6,28 @@ import lombok.NonNull;
 import org.example.declarations.Account;
 import org.example.declarations.Bank;
 import org.example.declarations.Client;
-import org.example.imp.clients.ClientImpl;
+import org.example.declarations.notifying.Publisher;
+import org.example.declarations.notifying.Subscriber;
+import org.example.exceptions.*;
+import org.example.imp.clients.ClientImp;
 import org.example.imp.account.*;
-import org.example.exceptions.InvalidAccountIdException;
-import org.example.exceptions.InvalidBankIdException;
-import org.example.exceptions.InvalidTransactionId;
-import org.example.exceptions.InvalidTransferAmountException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Class where users and accounts are stored
+ * and which provides API for bank`s operations
+ */
 @Getter
-public class BankImp implements Bank {
+public class BankImp implements Bank, Publisher {
     private final int bankId;
     private double debitInterest;
     private double depositInterest;
     private double creditCommission;
     private final List<Client> clients;
+    private final List<Subscriber> subscribers;
     private final List<Account> accounts;
 
     public BankImp(int id, double debit, double deposit, double credit) {
@@ -33,12 +37,13 @@ public class BankImp implements Bank {
         creditCommission = credit;
         clients = new ArrayList<>();
         accounts = new ArrayList<>();
+        subscribers = new ArrayList<>();
     }
 
     public void registrationClient(@NonNull String name, @NonNull String surname, String address, int passportNumber) {
         if (clients.isEmpty())
             clients.add(
-                    ClientImpl.builder()
+                    ClientImp.builder()
                             .id(1)
                             .name(name)
                             .surname(surname)
@@ -47,7 +52,7 @@ public class BankImp implements Bank {
                             .build());
         else
             clients.add(
-                    ClientImpl.builder()
+                    ClientImp.builder()
                             .id(clients.getLast().getId() + 1)
                             .name(name)
                             .surname(surname)
@@ -62,9 +67,9 @@ public class BankImp implements Bank {
         int id = accounts.isEmpty() ? 1 : accounts.getLast().getId();
         switch (type)
         {
-            case Debit -> addedAccount = new DebitAccount(id, clientId);
-            case Credit -> addedAccount = new CreditAccount(id, clientId);
-            case Deposit -> addedAccount = new DepositAccount(id, clientId);
+            case Debit -> addedAccount = new DebitAccount(id, clientId, debitInterest);
+            case Credit -> addedAccount = new CreditAccount(id, clientId, creditCommission);
+            case Deposit -> addedAccount = new DepositAccount(id, clientId, depositInterest);
             default -> throw new ExecutionControl.NotImplementedException(" ");
         }
         accounts.add(addedAccount);
@@ -87,22 +92,18 @@ public class BankImp implements Bank {
     public void setDebitInterest(double interest)
     {
         debitInterest = interest;
-        notifyClients(String.format("Updating debit interest\n New interest is %.3f", interest));
+        notify(String.format("Updating debit interest\n New interest is %.3f", interest));
     }
 
     public void setDepositInterest(double interest) {
         depositInterest = interest;
-        notifyClients(String.format("Updating deposit interest\n New interest is %.3f", interest));
+        notify(String.format("Updating deposit interest\n New interest is %.3f", interest));
     }
 
     public void setCreditCommission(double interest)
     {
         creditCommission = interest;
-        notifyClients(String.format("Updating credit interest\n New interest is %.3f", interest));
-    }
-    public void notifyClients(String notification)
-    {
-        clients.forEach(client -> client.update(notification));
+        notify(String.format("Updating credit interest\n New interest is %.3f", interest));
     }
 
     public Optional<Account> getAccountById(int id)
@@ -114,6 +115,19 @@ public class BankImp implements Bank {
     {
         return clients.stream().filter(x -> x.getId() == id).findFirst();
     }
+
+    @Override
+    public void dayRecalculate() throws InvalidAmountException
+    {
+        for (Account account : accounts) account.increaseHideAmount();
+    }
+
+    @Override
+    public void amountRecalculate()
+    {
+        for (Account account: accounts) account.approveHideAmount();
+    }
+
     public void cancelOperation(int transactionId, int accountId)
             throws InvalidAccountIdException, InvalidTransactionId
     {
@@ -124,5 +138,29 @@ public class BankImp implements Bank {
 
         if (!account.get().cancellation(transactionId))
             throw new InvalidTransactionId(String.format("Invalid transaction id in bankId -> %d", bankId));
+    }
+
+    @Override
+    public void subscribe(int subscriberId) throws InvalidClientIdException {
+        Optional<Client> client = getClientById(subscriberId);
+        if (client.isEmpty())
+            throw new InvalidClientIdException(String.format("Invalid id %d", subscriberId));
+
+        subscribers.add((Subscriber) client.get());
+    }
+
+
+    @Override
+    public void unsubscribe(int subscriberId) throws InvalidClientIdException {
+        Optional<Client> client = getClientById(subscriberId);
+        if (client.isEmpty())
+            throw new InvalidClientIdException(String.format("Invalid id %d", subscriberId));
+
+        subscribers.remove((Subscriber) client.get());
+    }
+
+    @Override
+    public void notify(String message) {
+        subscribers.forEach(subscriber -> subscriber.update(message));
     }
 }

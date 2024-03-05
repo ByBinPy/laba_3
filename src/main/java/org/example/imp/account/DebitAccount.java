@@ -5,9 +5,17 @@ import org.example.exceptions.InvalidTransferAmountException;
 
 public class DebitAccount extends Account {
 
-    public DebitAccount(int id,int clientId) {
-        super(id, clientId);
+    public DebitAccount(int id,int clientId, double interest) {
+        super(id, clientId, interest);
     }
+
+    @Override
+    public void approveHideAmount() {
+        amount += hideDifferenceAmount;
+        hideDifferenceAmount = 0;
+    }
+
+
     @Override
     public double withdrawal(double amount) throws InvalidTransferAmountException
     {
