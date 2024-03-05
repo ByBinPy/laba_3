@@ -1,4 +1,4 @@
-package org.example.imp.bank;
+package org.example.imp.banks;
 
 import jdk.jshell.spi.ExecutionControl;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import org.example.declarations.notifying.Publisher;
 import org.example.declarations.notifying.Subscriber;
 import org.example.exceptions.*;
 import org.example.imp.clients.ClientImp;
-import org.example.imp.account.*;
+import org.example.imp.accounts.*;
 
 import java.util.ArrayList;
 import java.util.List;

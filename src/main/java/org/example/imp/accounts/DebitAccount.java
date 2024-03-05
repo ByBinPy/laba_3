@@ -1,16 +1,16 @@
-package org.example.imp.account;
+package org.example.imp.accounts;
 
 import org.example.declarations.Account;
 import org.example.exceptions.InvalidTransferAmountException;
 /**
- * Deposit account
+ * Debit account
  * amount cannot be less 0
  * when happens recalculating account bank refill interest on balance
  */
-public class DepositAccount extends Account
-{
-    public DepositAccount(int id,int clientId, double interest) {
-        super(id,clientId,interest);
+public class DebitAccount extends Account {
+
+    public DebitAccount(int id,int clientId, double interest) {
+        super(id, clientId, interest);
     }
 
     @Override
@@ -18,6 +18,7 @@ public class DepositAccount extends Account
         amount += hideDifferenceAmount;
         hideDifferenceAmount = 0;
     }
+
 
     @Override
     public double withdrawal(double amount) throws InvalidTransferAmountException
@@ -29,9 +30,8 @@ public class DepositAccount extends Account
         return this.amount;
     }
     @Override
-    public double transfer(double transferAmount) throws InvalidTransferAmountException
-    {
-        if ((transferAmount + amount < 0 && amount >= 0) || (amount < 0 && transferAmount < 0))
+    public double transfer(double transferAmount) throws InvalidTransferAmountException {
+        if (transferAmount + amount < 0 && amount >= 0)
         {
             throw new InvalidTransferAmountException("result amount less 0");
         }
@@ -44,4 +44,3 @@ public class DepositAccount extends Account
         news = message;
     }
 }
-

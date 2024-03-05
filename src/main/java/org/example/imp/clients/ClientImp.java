@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import org.example.declarations.Client;
 import org.example.declarations.notifying.Subscriber;
-import org.example.imp.Message;
-
-import javax.print.attribute.SupportedValuesAttribute;
+import org.example.imp.records.Message;
 
 /**
  * Class where data about clients are stored

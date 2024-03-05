@@ -1,4 +1,4 @@
-package org.example.imp;
+package org.example.imp.records;
 /**
  * Record for notifying clients
  */

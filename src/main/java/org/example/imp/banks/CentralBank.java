@@ -1,4 +1,4 @@
-package org.example.imp.bank;
+package org.example.imp.banks;
 
 import org.example.declarations.Bank;
 import org.example.exceptions.*;
