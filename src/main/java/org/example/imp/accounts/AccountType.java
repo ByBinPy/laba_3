@@ -1,4 +1,4 @@
-package org.example.imp.account;
+package org.example.imp.accounts;
 /**
  * All accounts type for registration
  */

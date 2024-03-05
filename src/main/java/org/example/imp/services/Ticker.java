@@ -1,13 +1,15 @@
-package org.example.imp.service;
+package org.example.imp.services;
 
+import lombok.Getter;
 import org.example.exceptions.InvalidAmountException;
-import org.example.imp.bank.CentralBank;
+import org.example.imp.banks.CentralBank;
 
 /**
  * Service for time management
  */
 public class Ticker
 {
+    @Getter
     private int day = 0;
     private static Ticker ticker;
 

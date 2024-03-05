@@ -2,13 +2,12 @@ package org.example.declarations;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.exceptions.InvalidAccountIdException;
 import org.example.exceptions.InvalidAmountException;
-import org.example.imp.clients.Transaction;
 import org.example.exceptions.InvalidTransferAmountException;
 import org.example.declarations.notifying.Subscriber;
+import org.example.imp.records.Transaction;
+import org.example.imp.services.Ticker;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +44,7 @@ public abstract class Account implements Subscriber
     public double refill(double amount)
     {
         this.amount += amount;
-        transactionHistory.add(new Transaction(transactionHistory.getLast().id(), LocalTime.now(), amount));
+        transactionHistory.add(new Transaction(transactionHistory.getLast().id(), Ticker.getTicker().getDay(), amount));
         return this.amount;
     }
     public boolean cancellation(int transactionId)

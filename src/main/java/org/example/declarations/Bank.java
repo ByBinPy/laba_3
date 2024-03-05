@@ -3,7 +3,7 @@ package org.example.declarations;
 import jdk.jshell.spi.ExecutionControl;
 import lombok.NonNull;
 import org.example.exceptions.*;
-import org.example.imp.account.AccountType;
+import org.example.imp.accounts.AccountType;
 
 import java.util.Optional;
 
