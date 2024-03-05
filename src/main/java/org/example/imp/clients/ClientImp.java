@@ -9,6 +9,9 @@ import org.example.imp.Message;
 
 import javax.print.attribute.SupportedValuesAttribute;
 
+/**
+ * Class where data about clients are stored
+ */
 @Getter
 @Builder
 public class ClientImp implements Client, Subscriber
@@ -18,8 +21,9 @@ public class ClientImp implements Client, Subscriber
     private @NonNull String surname;
     private @NonNull Message message = new Message(" ");
     private String address = null;
-
     private Integer passportNumber = null;
+
+    /* method for checking client status */
     public boolean isSuspicious()
     {
         return address != null && passportNumber != null;

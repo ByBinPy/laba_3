@@ -14,6 +14,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Declaration API for bank accounts
+ * and implementation general methods
+ */
 @Getter
 public abstract class Account implements Subscriber
 {
@@ -53,7 +57,10 @@ public abstract class Account implements Subscriber
         transactionHistory = transactionHistory.stream().filter(t -> t.id() != transactionId).collect(Collectors.toList());
         return true;
     }
-    public abstract void approveHideAmount();
+    public void approveHideAmount()
+    {
+        amount += hideDifferenceAmount;
+    }
     public abstract double withdrawal(double amount) throws InvalidTransferAmountException;
     public abstract double transfer(double transferAmount) throws InvalidTransferAmountException;
 

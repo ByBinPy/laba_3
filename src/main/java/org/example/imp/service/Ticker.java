@@ -3,6 +3,9 @@ package org.example.imp.service;
 import org.example.exceptions.InvalidAmountException;
 import org.example.imp.bank.CentralBank;
 
+/**
+ * Service for time management
+ */
 public class Ticker
 {
     private int day = 0;
