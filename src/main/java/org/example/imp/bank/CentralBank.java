@@ -6,6 +6,11 @@ import org.example.exceptions.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * Head of all banks
+ * class where banks are stored banks
+ * it notifier banks for accrual and day-updating
+ */
 public class CentralBank {
     private final ArrayList<Bank> banks = new ArrayList<Bank>();
     private static final CentralBank centralBank = new CentralBank();

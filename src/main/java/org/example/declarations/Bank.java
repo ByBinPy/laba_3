@@ -7,6 +7,9 @@ import org.example.imp.account.AccountType;
 
 import java.util.Optional;
 
+/**
+ * Declaration API for bank operations
+ */
 public interface Bank
 {
     int getBankId();
@@ -21,7 +24,7 @@ public interface Bank
     void setCreditCommission(double interest);
     Optional<Account> getAccountById(int id);
     Optional<Client> getClientById(int id);
-    void dayRecalculate() throws Invalid, InvalidAmountException;
+    void dayRecalculate() throws InvalidAmountException;
     void amountRecalculate();
     void cancelOperation(int transactionId, int accountId)
             throws InvalidAccountIdException,

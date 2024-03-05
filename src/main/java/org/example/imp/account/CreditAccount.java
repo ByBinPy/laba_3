@@ -2,19 +2,24 @@ package org.example.imp.account;
 
 import org.example.declarations.Account;
 
-
+/**
+ * Credit account
+ * amount can be less 0
+ * when happens recalculating account bank withdrawal commission
+ */
 public class CreditAccount extends Account
 {
     public CreditAccount(int id,int clientId, double interest) {
         super(id,clientId,interest);
     }
-
     @Override
-    public void approveHideAmount() {
-        amount -= hideDifferenceAmount;
-        hideDifferenceAmount = 0;
+    public void increaseHideAmount()
+    {
+        if (amount < 0)
+        {
+            hideDifferenceAmount += amount*getInterest()/365;
+        }
     }
-
     @Override
     public double withdrawal(double amount)
     {

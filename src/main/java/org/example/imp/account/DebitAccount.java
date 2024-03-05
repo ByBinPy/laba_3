@@ -2,7 +2,11 @@ package org.example.imp.account;
 
 import org.example.declarations.Account;
 import org.example.exceptions.InvalidTransferAmountException;
-
+/**
+ * Debit account
+ * amount cannot be less 0
+ * when happens recalculating account bank refill interest on balance
+ */
 public class DebitAccount extends Account {
 
     public DebitAccount(int id,int clientId, double interest) {
