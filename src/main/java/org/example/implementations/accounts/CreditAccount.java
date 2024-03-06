@@ -1,4 +1,4 @@
-package org.example.imp.accounts;
+package org.example.implementations.accounts;
 
 import org.example.declarations.Account;
 
@@ -25,12 +25,6 @@ public class CreditAccount extends Account
     {
         this.amount -= amount;
         return this.amount;
-    }
-    @Override
-    public double transfer(double transferAmount)
-    {
-        amount += transferAmount;
-        return amount;
     }
 
     @Override

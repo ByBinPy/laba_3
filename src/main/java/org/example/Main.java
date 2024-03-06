@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.imp.banks.BankImp;
+import org.example.implementations.banks.BankImp;
 
 public class Main {
     public static void main(String[] args)

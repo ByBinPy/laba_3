@@ -1,8 +1,8 @@
-package org.example.imp.services;
+package org.example.implementations.services;
 
 import lombok.Getter;
 import org.example.exceptions.InvalidAmountException;
-import org.example.imp.banks.CentralBank;
+import org.example.implementations.banks.CentralBank;
 
 /**
  * Service for time management
