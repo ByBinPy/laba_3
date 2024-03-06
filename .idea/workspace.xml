@@ -4,22 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="add: add javadoc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Transaction.java" afterDir="false" />
+    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="add: tests&#10;fix: cancellation">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Transfer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/AccountTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/account/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/account/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/CreditAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/account/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DebitAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/account/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DepositAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/bank/BankImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/BankImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/bank/CentralBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/CentralBank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/ClientImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/ClientImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/Transaction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/service/Ticker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/imp/services/Ticker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidTransactionId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidTransactionIdException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/AccountType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/CreditAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DebitAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DepositAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/BankImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/BankImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/CentralBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/CentralBank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/ClientImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/clients/ClientImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/BaseTransaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/services/Ticker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/services/Ticker.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +40,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
             <expand>
@@ -54,8 +63,9 @@
         <option value="AnnotationType" />
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
+        <option value="JUnit5 Test Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,16 +81,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/AppData/Roaming/JetBrains/IntelliJIdea2022.2/scratches/lab1/src/main/java/org/example&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "jdk.selected.JAVA_MODULE": "21",
+    "last_opened_file_path": "C:/Users/User/AppData/Roaming/JetBrains/IntelliJIdea2022.2/scratches/ByBinPy",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\lab1\src\main\java\org\example" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\AppData\Roaming\JetBrains\IntelliJIdea2022.2\scratches\ByBinPy\src\" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.example" />
@@ -89,6 +113,155 @@
       <recent name="org.example.declarations" />
       <recent name="org.example.Declarations" />
     </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.imp.accounts" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.AccountTests">
+    <configuration name="AccountTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AccountTests.checkApproveInDebit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests.checkApproveInDebit&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AccountTests.checkDayCalculateInDebit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests.checkDayCalculateInDebit&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AccountTests.tryRefillWithNegativeAmountInDeposit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests.tryRefillWithNegativeAmountInDeposit&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ByBinPy.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ByBinPy.main" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.AccountTests.checkApproveInDebit" />
+      <item itemvalue="Gradle.AccountTests.checkDayCalculateInDebit" />
+      <item itemvalue="Gradle.AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" />
+      <item itemvalue="Gradle.AccountTests" />
+      <item itemvalue="Gradle.AccountTests.tryRefillWithNegativeAmountInDeposit" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.AccountTests" />
+        <item itemvalue="Gradle.AccountTests.checkApproveInDebit" />
+        <item itemvalue="Gradle.AccountTests.tryRefillWithNegativeAmountInDeposit" />
+        <item itemvalue="Gradle.AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" />
+        <item itemvalue="Gradle.AccountTests.checkDayCalculateInDebit" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -106,6 +279,8 @@
       <workItem from="1709307609265" duration="8285000" />
       <workItem from="1709469658873" duration="1199000" />
       <workItem from="1709490893832" duration="676000" />
+      <workItem from="1709666495883" duration="104000" />
+      <workItem from="1709666782807" duration="29025000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -163,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1709663331903</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add: folder records&#10;fix: change time in Transaction">
+      <created>1709663740947</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709663740947</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +370,8 @@
     <MESSAGE value="fix: change directories and add interfaces" />
     <MESSAGE value="commit: the MVP" />
     <MESSAGE value="add: add javadoc" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: add javadoc" />
+    <MESSAGE value="add: folder records&#10;fix: change time in Transaction" />
+    <MESSAGE value="add: tests&#10;fix: cancellation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: tests&#10;fix: cancellation" />
   </component>
 </project>

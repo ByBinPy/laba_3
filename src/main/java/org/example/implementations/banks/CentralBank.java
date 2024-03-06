@@ -1,10 +1,12 @@
-package org.example.imp.banks;
+package org.example.implementations.banks;
 
 import org.example.declarations.Bank;
 import org.example.exceptions.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Head of all banks
@@ -12,7 +14,7 @@ import java.util.Optional;
  * it notifier banks for accrual and day-updating
  */
 public class CentralBank {
-    private final ArrayList<Bank> banks = new ArrayList<Bank>();
+    private final List<Bank> banks = new ArrayList<Bank>();
     private static final CentralBank centralBank = new CentralBank();
 
 
@@ -21,13 +23,17 @@ public class CentralBank {
     }
 
 
-    public BankImp registration(double debitInterest, double depositInterest, double creditInterest) throws InvalidDataForRegistrationBankException {
+    public void registration(double debitInterest, double depositInterest, double creditInterest) throws InvalidDataForRegistrationBankException {
         if (!(debitInterest > 0 && depositInterest > 0 && creditInterest > 0))
             throw new InvalidDataForRegistrationBankException("incorrect data");
         if (banks.size() == 0)
-            return new BankImp(1, debitInterest, depositInterest, creditInterest);
+            banks.add(new BankImp(1, debitInterest/100, depositInterest/100, creditInterest/100));
         else
-            return new BankImp(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest);
+            banks.add(new BankImp(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest));
+    }
+    public void depriveOfLicense(int bankId)
+    {
+        banks.remove(getBankByID(bankId).get());
     }
     public Optional<Bank> getBankByID(int id)
     {

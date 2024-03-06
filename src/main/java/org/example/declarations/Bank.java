@@ -3,7 +3,7 @@ package org.example.declarations;
 import jdk.jshell.spi.ExecutionControl;
 import lombok.NonNull;
 import org.example.exceptions.*;
-import org.example.imp.accounts.AccountType;
+import org.example.implementations.accounts.AccountType;
 
 import java.util.Optional;
 
@@ -15,9 +15,11 @@ public interface Bank
     int getBankId();
     void registrationClient(@NonNull String name, @NonNull String surname, String address, int passportNumber);
     void registrationAccount(int clientId, AccountType type) throws ExecutionControl.NotImplementedException;
-    void transfer(int toBankId,int toAccountId, double transferAmount)
+    void removeAccount(int accountId);
+    void transfer(int fromBankId, int toBankId,int toAccountId, double transferAmount)
             throws InvalidBankIdException,
             InvalidAccountIdException,
+            InvalidRefillAmountException,
             InvalidTransferAmountException;
     void setDebitInterest(double interest);
     void setDepositInterest(double interest);
@@ -26,8 +28,10 @@ public interface Bank
     Optional<Client> getClientById(int id);
     void dayRecalculate() throws InvalidAmountException;
     void amountRecalculate();
-    void cancelOperation(int transactionId, int accountId)
-            throws InvalidAccountIdException,
-            InvalidTransactionId;
 
+    void canselTransfer(int transactionId, int accountId) throws InvalidTransactionIdException, InvalidAccountIdException;
+
+    void cancelOperation(int accountId, int transactionId)
+            throws InvalidAccountIdException,
+            InvalidTransactionIdException;
 }
