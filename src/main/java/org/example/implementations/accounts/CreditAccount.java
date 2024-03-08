@@ -1,6 +1,8 @@
 package org.example.implementations.accounts;
 
 import org.example.declarations.Account;
+import org.example.implementations.records.BaseTransaction;
+import org.example.implementations.services.Ticker;
 
 /**
  * Credit account
@@ -24,6 +26,10 @@ public class CreditAccount extends Account
     public double withdrawal(double amount)
     {
         this.amount -= amount;
+        transactionHistory.add(transactionHistory.isEmpty() ?
+                new BaseTransaction(1, Ticker.getTicker().getDay(), -amount) :
+                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), -amount));
+
         return this.amount;
     }
 
