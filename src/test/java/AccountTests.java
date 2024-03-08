@@ -1,23 +1,18 @@
 import jdk.jshell.spi.ExecutionControl;
 import lombok.SneakyThrows;
-import org.example.declarations.Account;
-import org.example.declarations.Bank;
-import static org.mockito.Mockito.*;
 import org.example.exceptions.InvalidTransferAmountException;
+import org.example.implementations.banks.BankImp;
 import org.example.implementations.services.Ticker;
-import org.junit.Before;
+
 import org.junit.jupiter.api.*;
 import org.example.exceptions.InvalidDataForRegistrationBankException;
 import org.example.exceptions.InvalidRefillAmountException;
 import org.example.implementations.accounts.AccountType;
 import org.example.implementations.banks.CentralBank;
 
-import java.util.Optional;
-import java.util.Timer;
-
 public class AccountTests
 {
-    Bank bank;
+    BankImp bank;
     CentralBank centralBank;
     @BeforeEach
     public void setup() {
@@ -30,15 +25,17 @@ public class AccountTests
         catch (InvalidDataForRegistrationBankException e) {
             throw new RuntimeException(e);
         }
-        bank = centralBank.getBankByID(1).get();
-        bank.registrationClient("S", "I", "ITMO", 2);
-        try {
-            bank.registrationAccount(1, AccountType.Debit);
-            bank.registrationAccount(1, AccountType.Credit);
-            bank.registrationAccount(1,AccountType.Deposit);
-        } catch (ExecutionControl.NotImplementedException e) {
-            throw new RuntimeException(e);
-        }
+
+        centralBank.getBankByID(1).ifPresent(bank -> {
+            bank.registrationClient("S", "I", "ITMO", 2);
+            try {
+                bank.registrationAccount(1, AccountType.Debit);
+                bank.registrationAccount(1, AccountType.Credit);
+                bank.registrationAccount(1,AccountType.Deposit);
+            } catch (ExecutionControl.NotImplementedException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
     @AfterEach
     public void clear()
@@ -160,7 +157,30 @@ public class AccountTests
     @Order(12)
     @Test
     public void checkClientNotifications() {
+        bank.subscribe(bank.getClientById(1).get().getId());
         bank.setCreditCommission(20);
-
+    }
+    @SneakyThrows
+    @Order(13)
+    @Test
+    public void checkTransferBetweenDifferenceBanks()
+    {
+        centralBank.getBankByID(2).get().registrationClient("name", "surname", "address", 123);
+        centralBank.getBankByID(2).get().registrationAccount(1, AccountType.Deposit);
+        bank.getAccountById(1).get().refill(200);
+        bank.transfer(1, 2, 1, 100);
+        Assertions.assertEquals(100, centralBank.getBankByID(2).get().getAccountById(1).get().getAmount());
+    }
+    @SneakyThrows
+    @Order(13)
+    @Test
+    public void checkTransferCancellationBetweenDifferenceBanks()
+    {
+        centralBank.getBankByID(2).get().registrationClient("name", "surname", "address", 123);
+        centralBank.getBankByID(2).get().registrationAccount(1, AccountType.Deposit);
+        bank.getAccountById(1).get().refill(200);
+        bank.transfer(1, 2, 1, 100);
+        bank.canselTransfer(2, 1);
+        Assertions.assertEquals(bank.getAccountById(1).get().getAmount(),200);
     }
 }

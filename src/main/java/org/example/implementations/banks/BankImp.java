@@ -149,11 +149,10 @@ public class BankImp implements Bank, Publisher {
                 .transferCancellation(transactionId);
 
         CentralBank.getInstance()
-                .getBankByID(transfer.externalBankId)
+                .getBankByID(transfer.externalBankId).flatMap(bankByID -> bankByID
+                        .getAccountById(transfer.externalAccountId))
                 .get()
-                .getAccountById(transfer.externalAccountId)
-                .get()
-                .transferCancellation(accountId, -transfer.differenceAmount);
+                .transferCancellation(bankId, accountId, -transfer.differenceAmount);
     }
     @Override
     public void cancelOperation(int accountId, int transactionId)

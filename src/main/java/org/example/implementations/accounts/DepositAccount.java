@@ -2,6 +2,9 @@ package org.example.implementations.accounts;
 
 import org.example.declarations.Account;
 import org.example.exceptions.InvalidTransferAmountException;
+import org.example.implementations.records.BaseTransaction;
+import org.example.implementations.services.Ticker;
+
 /**
  * Deposit account
  * amount cannot be less 0
@@ -26,6 +29,11 @@ public class DepositAccount extends Account
         if (this.amount - amount < 0)
             throw new InvalidTransferAmountException("try refill amount great then currency amount");
         this.amount -= amount;
+
+        transactionHistory.add(transactionHistory.isEmpty() ?
+                new BaseTransaction(1, Ticker.getTicker().getDay(), -amount) :
+                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), -amount));
+
         return this.amount;
     }
 

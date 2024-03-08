@@ -1,9 +1,7 @@
 package org.example.declarations;
 
-import lombok.Getter;
-
 /**
- * Record for logging bank operations
+ * abstract class for logging bank operations
  */
 public abstract class Transaction
 {

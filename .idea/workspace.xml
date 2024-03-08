@@ -4,28 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="add: tests&#10;fix: cancellation">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Transfer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/AccountTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+    <list default="true" id="b9e16e6e-b4b7-468c-b319-c59f523fb524" name="Changes" comment="commit before passing lab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidTransactionId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exceptions/InvalidTransactionIdException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/AccountType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/AccountType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/CreditAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DebitAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/accounts/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DepositAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/BankImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/BankImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/banks/CentralBank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/CentralBank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/clients/ClientImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/clients/ClientImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/records/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/BaseTransaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/imp/services/Ticker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/services/Ticker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/declarations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/declarations/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/CreditAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/CreditAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DebitAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DebitAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DepositAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/accounts/DepositAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/BankImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/banks/BankImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/implementations/records/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AccountTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AccountTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +106,7 @@
       <recent name="org.example.imp.accounts" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.AccountTests">
+  <component name="RunManager" selected="Gradle.AccountTests.checkTransferCancellationBetweenDifferenceBanks">
     <configuration name="AccountTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -164,7 +153,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AccountTests.checkDayCalculateInDebit" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="AccountTests.checkTransferBetweenDifferenceBanks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -177,7 +166,30 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;AccountTests.checkDayCalculateInDebit&quot;" />
+            <option value="&quot;AccountTests.checkTransferBetweenDifferenceBanks&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="AccountTests.checkTransferCancellationBetweenDifferenceBanks" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;AccountTests.checkTransferCancellationBetweenDifferenceBanks&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,29 +222,6 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="ByBinPy.main" />
       <method v="2">
@@ -247,19 +236,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Gradle.AccountTests.checkTransferBetweenDifferenceBanks" />
+      <item itemvalue="Gradle.AccountTests.checkTransferCancellationBetweenDifferenceBanks" />
       <item itemvalue="Gradle.AccountTests.checkApproveInDebit" />
-      <item itemvalue="Gradle.AccountTests.checkDayCalculateInDebit" />
-      <item itemvalue="Gradle.AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" />
       <item itemvalue="Gradle.AccountTests" />
       <item itemvalue="Gradle.AccountTests.tryRefillWithNegativeAmountInDeposit" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.AccountTests.checkTransferCancellationBetweenDifferenceBanks" />
+        <item itemvalue="Gradle.AccountTests.checkTransferBetweenDifferenceBanks" />
         <item itemvalue="Gradle.AccountTests" />
         <item itemvalue="Gradle.AccountTests.checkApproveInDebit" />
         <item itemvalue="Gradle.AccountTests.tryRefillWithNegativeAmountInDeposit" />
-        <item itemvalue="Gradle.AccountTests.tryWithdrawalAmountGreatThenCurrentAmountInCreditAccount" />
-        <item itemvalue="Gradle.AccountTests.checkDayCalculateInDebit" />
       </list>
     </recent_temporary>
   </component>
@@ -281,6 +270,9 @@
       <workItem from="1709490893832" duration="676000" />
       <workItem from="1709666495883" duration="104000" />
       <workItem from="1709666782807" duration="29025000" />
+      <workItem from="1709756536151" duration="2251000" />
+      <workItem from="1709902838857" duration="54000" />
+      <workItem from="1709920507119" duration="1064000" />
     </task>
     <task id="LOCAL-00001" summary="wrote special exceptions and logic for transfer">
       <created>1708870655403</created>
@@ -345,7 +337,21 @@
       <option name="project" value="LOCAL" />
       <updated>1709663740947</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add: tests&#10;fix: cancellation">
+      <created>1709756563572</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709756563572</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add: tests&#10;fix: cancellation">
+      <created>1709756832929</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709756832929</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +378,23 @@
     <MESSAGE value="add: add javadoc" />
     <MESSAGE value="add: folder records&#10;fix: change time in Transaction" />
     <MESSAGE value="add: tests&#10;fix: cancellation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: tests&#10;fix: cancellation" />
+    <MESSAGE value="commit before passing lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit before passing lab" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/declarations/Account.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/implementations/banks/BankImp.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

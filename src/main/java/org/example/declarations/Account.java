@@ -48,7 +48,7 @@ public abstract class Account implements Subscriber
         this.amount += amount;
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new BaseTransaction(1, Ticker.getTicker().getDay(), amount) :
-                new BaseTransaction(transactionHistory.getLast().id, Ticker.getTicker().getDay(), amount));
+                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), amount));
 
         return this.amount;
     }
@@ -61,7 +61,7 @@ public abstract class Account implements Subscriber
         amount += transferAmount;
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new Transfer(1, Ticker.getTicker().getDay(), transferAmount, externalBank, externalAccount) :
-                new Transfer(transactionHistory.getLast().id, Ticker.getTicker().getDay(), amount,  externalBank, externalAccount));
+                new Transfer(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), transferAmount,  externalBank, externalAccount));
     }
     public boolean baseCancellation(int transactionId)
     {
@@ -74,11 +74,12 @@ public abstract class Account implements Subscriber
 
         return true;
     }
-    public void transferCancellation(int externalAccountId, double transferAmount) throws InvalidAccountIdException
+    public void transferCancellation(int externalBankId, int externalAccountId, double transferAmount) throws InvalidAccountIdException
     {
         Transfer transfer = (Transfer) transactionHistory.stream()
                 .filter(transaction -> transaction instanceof Transfer
                         && ((Transfer) transaction).externalAccountId == externalAccountId
+                        && ((Transfer) transaction).externalBankId == externalBankId
                         && transaction.differenceAmount == transferAmount).findFirst()
                 .get();
 
