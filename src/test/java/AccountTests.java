@@ -26,8 +26,9 @@ public class AccountTests
             throw new RuntimeException(e);
         }
 
-        centralBank.getBankByID(1).ifPresent(bank -> {
-            bank.registrationClient("S", "I", "ITMO", 2);
+        centralBank.getBankByID(1).ifPresent(b -> {
+            bank = (BankImp) b;
+            b.registrationClient("S", "I", "ITMO", 2);
             try {
                 bank.registrationAccount(1, AccountType.Debit);
                 bank.registrationAccount(1, AccountType.Credit);
@@ -37,6 +38,7 @@ public class AccountTests
             }
         });
     }
+    @SneakyThrows
     @AfterEach
     public void clear()
     {

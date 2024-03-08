@@ -15,7 +15,7 @@ public interface Bank
     int getBankId();
     void registrationClient(@NonNull String name, @NonNull String surname, String address, int passportNumber);
     void registrationAccount(int clientId, AccountType type) throws ExecutionControl.NotImplementedException;
-    void removeAccount(int accountId);
+    void removeAccount(int accountId) throws InvalidAccountIdException;
     void transfer(int fromBankId, int toBankId,int toAccountId, double transferAmount)
             throws InvalidBankIdException,
             InvalidAccountIdException,

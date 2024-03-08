@@ -2,7 +2,6 @@ package org.example.declarations;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.example.exceptions.InvalidAccountIdException;
 import org.example.exceptions.InvalidRefillAmountException;
 import org.example.exceptions.InvalidTransactionIdException;
 import org.example.exceptions.InvalidTransferAmountException;
@@ -27,7 +26,7 @@ public abstract class Account implements Subscriber
     protected int clientId;
     protected double amount = defaultAmount;
     @Setter
-    double interest = defaultAmount;
+    double interest;
     protected double hideDifferenceAmount = defaultAmount;
     protected String news = "";
     protected List<Transaction> transactionHistory = new ArrayList<>();
@@ -74,58 +73,42 @@ public abstract class Account implements Subscriber
 
         return true;
     }
-    public void transferCancellation(int externalBankId, int externalAccountId, double transferAmount) throws InvalidAccountIdException
-    {
-        Transfer transfer = (Transfer) transactionHistory.stream()
+    public void transferCancellation(int externalBankId, int externalAccountId, double transferAmount) throws InvalidTransactionIdException {
+        Optional<Transaction> transfer = transactionHistory.stream()
                 .filter(transaction -> transaction instanceof Transfer
                         && ((Transfer) transaction).externalAccountId == externalAccountId
                         && ((Transfer) transaction).externalBankId == externalBankId
-                        && transaction.differenceAmount == transferAmount).findFirst()
-                .get();
+                        && transaction.differenceAmount == transferAmount).findFirst();
 
-        if (transactionHistory
-                .stream()
-                .filter(transaction -> transaction instanceof Transfer
-                        && ((Transfer) transaction).externalAccountId == externalAccountId
-                        && transaction.differenceAmount == transferAmount)
-                .findFirst()
-                .isEmpty())
+        if (transfer.isEmpty())
 
-            throw new InvalidAccountIdException(String.format("Unknown transaction id in %d account", externalAccountId));
+            throw new InvalidTransactionIdException(String.format("Unknown transaction id in %d account", externalAccountId));
 
-        amount -= transfer.differenceAmount;
-        transactionHistory.remove(transactionHistory
-                .stream()
-                .filter(transaction -> transaction instanceof Transfer
-                        && ((Transfer) transaction).externalAccountId == externalAccountId
-                        && transaction.differenceAmount == transferAmount)
-                .findFirst());
+        amount -= transfer.get().differenceAmount;
+        transactionHistory.remove(transfer.get());
     }
     public Transfer transferCancellation(int transactionId) throws InvalidTransactionIdException
     {
-        Transfer transfer = (Transfer) transactionHistory
+        Optional<Transaction> transfer = transactionHistory
                 .stream()
                 .filter(transaction -> transaction instanceof Transfer
                         && transaction.id == transactionId)
-                .findFirst()
-                .get();
+                .findFirst();
 
-        if (transactionHistory
-                .stream()
-                .filter(transaction -> transaction instanceof Transfer
-                        && transaction.id == transactionId)
-                .findFirst()
-                .isEmpty())
-
+        if (transfer.isEmpty())
             throw new InvalidTransactionIdException(String.format("Unknown transaction id in %d account", transactionId));
 
-        amount -= transfer.differenceAmount;
-        transactionHistory.remove(transactionHistory.stream()
+        amount -= transfer.get().differenceAmount;
+
+        transactionHistory.stream()
                 .filter(transaction -> transaction instanceof Transfer
                         && transaction.id == transactionId)
-                .findFirst());
+                .findFirst()
+                .ifPresent(
+                        transaction ->
+                        transactionHistory.remove(transaction));
 
-        return transfer;
+        return (Transfer) transfer.get();
     }
     public void approveHideAmount()
     {
