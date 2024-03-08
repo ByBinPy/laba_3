@@ -1,12 +1,10 @@
 package org.example.implementations.banks;
-
 import org.example.declarations.Bank;
 import org.example.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Head of all banks
@@ -14,7 +12,7 @@ import java.util.stream.Collectors;
  * it notifier banks for accrual and day-updating
  */
 public class CentralBank {
-    private final List<Bank> banks = new ArrayList<Bank>();
+    private final List<Bank> banks = new ArrayList<>();
     private static final CentralBank centralBank = new CentralBank();
 
 
@@ -31,9 +29,13 @@ public class CentralBank {
         else
             banks.add(new BankImp(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest));
     }
-    public void depriveOfLicense(int bankId)
+    public void depriveOfLicense(int bankId) throws InvalidBankIdException
     {
-        banks.remove(getBankByID(bankId).get());
+        Optional<Bank> bank = getBankByID(bankId);
+        if (bank.isEmpty())
+            throw new InvalidBankIdException("Invalid bankId in depriving");
+
+        banks.remove(bank.get());
     }
     public Optional<Bank> getBankByID(int id)
     {
@@ -43,8 +45,7 @@ public class CentralBank {
     {
         for (Bank bank : banks) bank.dayRecalculate();
     }
-    public void notifyBanksAboutAccrual() throws InvalidAmountException
-    {
+    public void notifyBanksAboutAccrual() {
         for (Bank bank : banks) bank.amountRecalculate();
     }
 }

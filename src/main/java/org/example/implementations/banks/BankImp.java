@@ -78,9 +78,13 @@ public class BankImp implements Bank, Publisher {
         accounts.add(addedAccount);
     }
 
-    public void removeAccount(int accountId)
+    public void removeAccount(int accountId) throws InvalidAccountIdException
     {
-        accounts.remove(getAccountById(accountId).get());
+         Optional<Account> account = getAccountById(accountId);
+         if (account.isEmpty())
+             throw new InvalidAccountIdException("Invalid id in removeAccount");
+
+         accounts.remove(account.get());
     }
 
     public void transfer(int fromAccountId, int toBankId, int toAccountId, double transferAmount)
@@ -131,7 +135,7 @@ public class BankImp implements Bank, Publisher {
     }
 
     @Override
-    public void dayRecalculate() throws InvalidAmountException {
+    public void dayRecalculate() {
         for (Account account : accounts) account.increaseHideAmount();
     }
 
@@ -144,15 +148,23 @@ public class BankImp implements Bank, Publisher {
             throws InvalidTransactionIdException,
                    InvalidAccountIdException {
 
-        Transfer transfer = getAccountById(accountId)
-                .get()
-                .transferCancellation(transactionId);
+        Transfer transfer;
+        Optional<Account> fromAccount= getAccountById(accountId);
+        if (fromAccount.isEmpty())
+            throw new InvalidAccountIdException("Invalid query`s accountId");
 
-        CentralBank.getInstance()
-                .getBankByID(transfer.externalBankId).flatMap(bankByID -> bankByID
-                        .getAccountById(transfer.externalAccountId))
-                .get()
-                .transferCancellation(bankId, accountId, -transfer.differenceAmount);
+        transfer = fromAccount.get().transferCancellation(transactionId);
+
+        Optional<Account> toAccount = CentralBank
+                .getInstance()
+                .getBankByID(transfer.externalBankId)
+                .flatMap(bankByID ->
+                        bankByID.getAccountById(transfer.externalAccountId));
+
+        if (toAccount.isEmpty())
+            throw new InvalidAccountIdException("Non existed accountId was returned");
+
+        toAccount.get().transferCancellation(bankId, accountId, -transfer.differenceAmount);
     }
     @Override
     public void cancelOperation(int accountId, int transactionId)

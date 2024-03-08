@@ -22,6 +22,7 @@ public class DebitAccount extends Account {
 
         if (this.amount - amount < 0)
             throw new InvalidTransferAmountException("try refill amount great then currency amount");
+
         this.amount -= amount;
 
         transactionHistory.add(transactionHistory.isEmpty() ?
