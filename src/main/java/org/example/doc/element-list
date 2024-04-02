@@ -1,0 +1,10 @@
+unnamed package
+org.example
+org.example.declarations
+org.example.declarations.notifying
+org.example.exceptions
+org.example.implementations.accounts
+org.example.implementations.banks
+org.example.implementations.clients
+org.example.implementations.records
+org.example.implementations.services
