@@ -1,10 +1,10 @@
 package org.example;
 
-import org.example.implementations.banks.BankImp;
+import org.example.implementations.banks.BankImpl;
 
 public class Main {
     public static void main(String[] args)
     {
-        BankImp bank = new BankImp(1,1,1,1);
+        BankImpl bank = new BankImpl(1,1,1,1);
     }
 }

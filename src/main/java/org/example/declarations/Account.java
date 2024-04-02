@@ -9,6 +9,7 @@ import org.example.declarations.notifying.Subscriber;
 import org.example.implementations.records.BaseTransaction;
 import org.example.implementations.records.Transfer;
 import org.example.implementations.services.Ticker;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +20,7 @@ import java.util.stream.Collectors;
  * and implementation general methods
  */
 @Getter
-public abstract class Account implements Subscriber
-{
+public abstract class Account implements Subscriber {
     private final double defaultAmount = 0;
     protected int id;
     protected int clientId;
@@ -30,29 +30,30 @@ public abstract class Account implements Subscriber
     protected double hideDifferenceAmount = defaultAmount;
     protected String news = "";
     protected List<Transaction> transactionHistory = new ArrayList<>();
+
     public Account(int id, int clientId, double interest) {
         this.id = id;
         this.clientId = clientId;
         this.interest = interest;
     }
-    public void increaseHideAmount()
-    {
-        hideDifferenceAmount += amount*interest/365;
+
+    public void increaseHideAmount() {
+        hideDifferenceAmount += amount * interest / 365;
     }
-    public double refill(double amount) throws InvalidRefillAmountException
-    {
+
+    public double refill(double amount) throws InvalidRefillAmountException {
         if (amount < 0)
             throw new InvalidRefillAmountException(String.format("Negative amount in refill operation in account %d", id));
 
         this.amount += amount;
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new BaseTransaction(1, Ticker.getTicker().getDay(), amount) :
-                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), amount));
+                new BaseTransaction(transactionHistory.getLast().id + 1, Ticker.getTicker().getDay(), amount));
 
         return this.amount;
     }
-    public void transfer(int externalBank, int externalAccount, double transferAmount) throws InvalidTransferAmountException
-    {
+
+    public void transfer(int externalBank, int externalAccount, double transferAmount) throws InvalidTransferAmountException {
         // int id, int day, double differenceAmount, int externalId, int externalAccountId, int externalBankId
         if (amount + transferAmount < 0)
             throw new InvalidTransferAmountException("Result amount would be less zero");
@@ -60,11 +61,11 @@ public abstract class Account implements Subscriber
         amount += transferAmount;
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new Transfer(1, Ticker.getTicker().getDay(), transferAmount, externalBank, externalAccount) :
-                new Transfer(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), transferAmount,  externalBank, externalAccount));
+                new Transfer(transactionHistory.getLast().id + 1, Ticker.getTicker().getDay(), transferAmount, externalBank, externalAccount));
     }
-    public boolean baseCancellation(int transactionId)
-    {
-        Optional<Transaction>transaction =  transactionHistory.stream().filter(t -> t.id == transactionId).findFirst();
+
+    public boolean baseCancellation(int transactionId) {
+        Optional<Transaction> transaction = transactionHistory.stream().filter(t -> t.id == transactionId).findFirst();
         if (transaction.isEmpty())
             return false;
 
@@ -73,6 +74,7 @@ public abstract class Account implements Subscriber
 
         return true;
     }
+
     public void transferCancellation(int externalBankId, int externalAccountId, double transferAmount) throws InvalidTransactionIdException {
         Optional<Transaction> transfer = transactionHistory.stream()
                 .filter(transaction -> transaction instanceof Transfer
@@ -87,8 +89,8 @@ public abstract class Account implements Subscriber
         amount -= transfer.get().differenceAmount;
         transactionHistory.remove(transfer.get());
     }
-    public Transfer transferCancellation(int transactionId) throws InvalidTransactionIdException
-    {
+
+    public Transfer transferCancellation(int transactionId) throws InvalidTransactionIdException {
         Optional<Transaction> transfer = transactionHistory
                 .stream()
                 .filter(transaction -> transaction instanceof Transfer
@@ -106,15 +108,16 @@ public abstract class Account implements Subscriber
                 .findFirst()
                 .ifPresent(
                         transaction ->
-                        transactionHistory.remove(transaction));
+                                transactionHistory.remove(transaction));
 
         return (Transfer) transfer.get();
     }
-    public void approveHideAmount()
-    {
+
+    public void approveHideAmount() {
         amount += hideDifferenceAmount;
         hideDifferenceAmount = 0;
     }
+
     public abstract double withdrawal(double amount) throws InvalidTransferAmountException;
 
 }

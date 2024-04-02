@@ -12,8 +12,7 @@ import org.example.implementations.records.Message;
  */
 @Getter
 @Builder
-public class ClientImp implements Client, Subscriber
-{
+public class ClientImpl implements Client, Subscriber {
     private @NonNull Integer id;
     private @NonNull String name;
     private @NonNull String surname;
@@ -23,21 +22,20 @@ public class ClientImp implements Client, Subscriber
     private Integer passportNumber;
 
     /* method for checking client status */
-    public boolean isSuspicious()
-    {
+    public boolean isSuspicious() {
         return address != null && passportNumber != null;
-    }
-    @Override
-    public int hashCode()
-    {
-        return name.hashCode()+surname.hashCode()+address.hashCode() + passportNumber;
     }
 
     @Override
-    public void update(String message)
-    {
+    public int hashCode() {
+        return name.hashCode() + surname.hashCode() + address.hashCode() + passportNumber;
+    }
+
+    @Override
+    public void update(String message) {
         this.message = new Message(message);
     }
+
     @Override
     public int getId() {
         return id;

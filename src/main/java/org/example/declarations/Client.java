@@ -6,5 +6,6 @@ package org.example.declarations;
  */
 public interface Client {
     boolean isSuspicious();
+
     int getId();
 }

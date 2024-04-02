@@ -12,13 +12,12 @@ import org.example.implementations.services.Ticker;
  */
 public class DebitAccount extends Account {
 
-    public DebitAccount(int id,int clientId, double interest) {
+    public DebitAccount(int id, int clientId, double interest) {
         super(id, clientId, interest);
     }
 
     @Override
-    public double withdrawal(double amount) throws InvalidTransferAmountException
-    {
+    public double withdrawal(double amount) throws InvalidTransferAmountException {
 
         if (this.amount - amount < 0)
             throw new InvalidTransferAmountException("try refill amount great then currency amount");
@@ -27,7 +26,7 @@ public class DebitAccount extends Account {
 
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new BaseTransaction(1, Ticker.getTicker().getDay(), -amount) :
-                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), -amount));
+                new BaseTransaction(transactionHistory.getLast().id + 1, Ticker.getTicker().getDay(), -amount));
 
         return this.amount;
     }

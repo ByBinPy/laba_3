@@ -9,26 +9,24 @@ import org.example.implementations.services.Ticker;
  * amount can be less 0
  * when happens recalculating account bank withdrawal commission
  */
-public class CreditAccount extends Account
-{
-    public CreditAccount(int id,int clientId, double interest) {
-        super(id,clientId,interest);
+public class CreditAccount extends Account {
+    public CreditAccount(int id, int clientId, double interest) {
+        super(id, clientId, interest);
     }
+
     @Override
-    public void increaseHideAmount()
-    {
-        if (amount < 0)
-        {
-            hideDifferenceAmount += amount*getInterest()/365;
+    public void increaseHideAmount() {
+        if (amount < 0) {
+            hideDifferenceAmount += amount * getInterest() / 365;
         }
     }
+
     @Override
-    public double withdrawal(double amount)
-    {
+    public double withdrawal(double amount) {
         this.amount -= amount;
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new BaseTransaction(1, Ticker.getTicker().getDay(), -amount) :
-                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), -amount));
+                new BaseTransaction(transactionHistory.getLast().id + 1, Ticker.getTicker().getDay(), -amount));
 
         return this.amount;
     }

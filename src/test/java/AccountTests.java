@@ -1,7 +1,7 @@
 import jdk.jshell.spi.ExecutionControl;
 import lombok.SneakyThrows;
 import org.example.exceptions.InvalidTransferAmountException;
-import org.example.implementations.banks.BankImp;
+import org.example.implementations.banks.BankImpl;
 import org.example.implementations.services.Ticker;
 
 import org.junit.jupiter.api.*;
@@ -12,7 +12,7 @@ import org.example.implementations.banks.CentralBank;
 
 public class AccountTests
 {
-    BankImp bank;
+    BankImpl bank;
     CentralBank centralBank;
     @BeforeEach
     public void setup() {
@@ -27,7 +27,7 @@ public class AccountTests
         }
 
         centralBank.getBankByID(1).ifPresent(b -> {
-            bank = (BankImp) b;
+            bank = (BankImpl) b;
             b.registrationClient("S", "I", "ITMO", 2);
             try {
                 bank.registrationAccount(1, AccountType.Debit);

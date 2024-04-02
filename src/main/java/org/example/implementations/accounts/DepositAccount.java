@@ -10,10 +10,9 @@ import org.example.implementations.services.Ticker;
  * amount cannot be less 0
  * when happens recalculating account bank refill interest on balance
  */
-public class DepositAccount extends Account
-{
-    public DepositAccount(int id,int clientId, double interest) {
-        super(id,clientId,interest);
+public class DepositAccount extends Account {
+    public DepositAccount(int id, int clientId, double interest) {
+        super(id, clientId, interest);
     }
 
     @Override
@@ -23,8 +22,7 @@ public class DepositAccount extends Account
     }
 
     @Override
-    public double withdrawal(double amount) throws InvalidTransferAmountException
-    {
+    public double withdrawal(double amount) throws InvalidTransferAmountException {
 
         if (this.amount - amount < 0)
             throw new InvalidTransferAmountException("try refill amount great then currency amount");
@@ -32,7 +30,7 @@ public class DepositAccount extends Account
 
         transactionHistory.add(transactionHistory.isEmpty() ?
                 new BaseTransaction(1, Ticker.getTicker().getDay(), -amount) :
-                new BaseTransaction(transactionHistory.getLast().id+1, Ticker.getTicker().getDay(), -amount));
+                new BaseTransaction(transactionHistory.getLast().id + 1, Ticker.getTicker().getDay(), -amount));
 
         return this.amount;
     }

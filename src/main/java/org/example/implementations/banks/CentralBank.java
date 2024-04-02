@@ -1,4 +1,5 @@
 package org.example.implementations.banks;
+
 import org.example.declarations.Bank;
 import org.example.exceptions.*;
 
@@ -25,26 +26,27 @@ public class CentralBank {
         if (!(debitInterest > 0 && depositInterest > 0 && creditInterest > 0))
             throw new InvalidDataForRegistrationBankException("incorrect data");
         if (banks.size() == 0)
-            banks.add(new BankImp(1, debitInterest/100, depositInterest/100, creditInterest/100));
+            banks.add(new BankImpl(1, debitInterest / 100, depositInterest / 100, creditInterest / 100));
         else
-            banks.add(new BankImp(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest));
+            banks.add(new BankImpl(banks.getLast().getBankId() + 1, debitInterest, depositInterest, creditInterest));
     }
-    public void depriveOfLicense(int bankId) throws InvalidBankIdException
-    {
+
+    public void depriveOfLicense(int bankId) throws InvalidBankIdException {
         Optional<Bank> bank = getBankByID(bankId);
         if (bank.isEmpty())
             throw new InvalidBankIdException("Invalid bankId in depriving");
 
         banks.remove(bank.get());
     }
-    public Optional<Bank> getBankByID(int id)
-    {
-        return banks.stream().filter(b -> b.getBankId() == id ).findFirst();
+
+    public Optional<Bank> getBankByID(int id) {
+        return banks.stream().filter(b -> b.getBankId() == id).findFirst();
     }
-    public void notifyBanksAboutNewDay() throws InvalidAmountException
-    {
+
+    public void notifyBanksAboutNewDay() throws InvalidAmountException {
         for (Bank bank : banks) bank.dayRecalculate();
     }
+
     public void notifyBanksAboutAccrual() {
         for (Bank bank : banks) bank.amountRecalculate();
     }

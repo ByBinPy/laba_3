@@ -9,7 +9,7 @@ import org.example.declarations.Client;
 import org.example.declarations.notifying.Publisher;
 import org.example.declarations.notifying.Subscriber;
 import org.example.exceptions.*;
-import org.example.implementations.clients.ClientImp;
+import org.example.implementations.clients.ClientImpl;
 import org.example.implementations.accounts.*;
 import org.example.implementations.records.Transfer;
 
@@ -21,7 +21,7 @@ import java.util.Optional;
  * Class where users and accounts are stored
  * and which provides API for bank`s operations
  */
-public class BankImp implements Bank, Publisher {
+public class BankImpl implements Bank, Publisher {
     @Getter
     private final int bankId;
     @Getter
@@ -34,7 +34,7 @@ public class BankImp implements Bank, Publisher {
     private final List<Subscriber> subscribers;
     private final List<Account> accounts;
 
-    public BankImp(int id, double debit, double deposit, double credit) {
+    public BankImpl(int id, double debit, double deposit, double credit) {
         bankId = id;
         debitInterest = debit;
         depositInterest = deposit;
@@ -47,7 +47,7 @@ public class BankImp implements Bank, Publisher {
     public void registrationClient(@NonNull String name, @NonNull String surname, String address, int passportNumber) {
         if (clients.isEmpty())
             clients.add(
-                    ClientImp.builder()
+                    ClientImpl.builder()
                             .id(1)
                             .name(name)
                             .surname(surname)
@@ -56,7 +56,7 @@ public class BankImp implements Bank, Publisher {
                             .build());
         else
             clients.add(
-                    ClientImp.builder()
+                    ClientImpl.builder()
                             .id(clients.getLast().getId() + 1)
                             .name(name)
                             .surname(surname)
@@ -78,20 +78,18 @@ public class BankImp implements Bank, Publisher {
         accounts.add(addedAccount);
     }
 
-    public void removeAccount(int accountId) throws InvalidAccountIdException
-    {
-         Optional<Account> account = getAccountById(accountId);
-         if (account.isEmpty())
-             throw new InvalidAccountIdException("Invalid id in removeAccount");
+    public void removeAccount(int accountId) throws InvalidAccountIdException {
+        Optional<Account> account = getAccountById(accountId);
+        if (account.isEmpty())
+            throw new InvalidAccountIdException("Invalid id in removeAccount");
 
-         accounts.remove(account.get());
+        accounts.remove(account.get());
     }
 
     public void transfer(int fromAccountId, int toBankId, int toAccountId, double transferAmount)
             throws InvalidBankIdException,
             InvalidAccountIdException,
-            InvalidTransferAmountException
-            {
+            InvalidTransferAmountException {
 
         Optional<Bank> toBank = CentralBank.getInstance().getBankByID(toBankId);
 
@@ -143,13 +141,14 @@ public class BankImp implements Bank, Publisher {
     public void amountRecalculate() {
         for (Account account : accounts) account.approveHideAmount();
     }
+
     @Override
     public void canselTransfer(int transactionId, int accountId)
             throws InvalidTransactionIdException,
-                   InvalidAccountIdException {
+            InvalidAccountIdException {
 
         Transfer transfer;
-        Optional<Account> fromAccount= getAccountById(accountId);
+        Optional<Account> fromAccount = getAccountById(accountId);
         if (fromAccount.isEmpty())
             throw new InvalidAccountIdException("Invalid query`s accountId");
 
@@ -166,11 +165,11 @@ public class BankImp implements Bank, Publisher {
 
         toAccount.get().transferCancellation(bankId, accountId, -transfer.differenceAmount);
     }
+
     @Override
     public void cancelOperation(int accountId, int transactionId)
             throws InvalidAccountIdException,
-            InvalidTransactionIdException
-    {
+            InvalidTransactionIdException {
 
         Optional<Account> account = getAccountById(accountId);
 

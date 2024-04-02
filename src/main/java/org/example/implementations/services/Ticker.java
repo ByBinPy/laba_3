@@ -7,21 +7,18 @@ import org.example.implementations.banks.CentralBank;
 /**
  * Service for time management
  */
-public class Ticker
-{
+public class Ticker {
     @Getter
     private int day = 0;
     private static Ticker ticker;
 
-    public static Ticker getTicker()
-    {
+    public static Ticker getTicker() {
         if (ticker == null)
             ticker = new Ticker();
         return ticker;
     }
 
-    public void moveDay()
-    {
+    public void moveDay() {
         day++;
         try {
             CentralBank.getInstance().notifyBanksAboutNewDay();
@@ -29,8 +26,8 @@ public class Ticker
             throw new RuntimeException(e);
         }
     }
-    public void moveDay(int countDays)
-    {
+
+    public void moveDay(int countDays) {
         for (int i = 0; i < countDays; i++) {
             moveDay();
         }
